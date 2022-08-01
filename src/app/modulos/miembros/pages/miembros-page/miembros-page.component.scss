@@ -1,18 +1,26 @@
-#miembros{
+#miembros {
   margin: 0 auto;
   width: 100%;
   text-align: center;
-  height:100vh;
+  height: 100vh;
 
 }
-h1.main-title{
+
+h1.main-title {
   margin: 0;
   padding: 20px;
 }
-p{
+
+p {
   padding: 0;
   margin: 0;
 }
-.table-container{
+
+.table-container {
   margin: 1em;
+}
+
+.action-button {
+  margin: 5px;
+  font-weight: bold;
 }

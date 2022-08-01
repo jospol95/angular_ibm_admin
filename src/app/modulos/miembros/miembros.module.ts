@@ -10,22 +10,30 @@ import {MatListModule} from "@angular/material/list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
+import {MiembrosService} from "./miembros-service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
-  imports: [
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatListModule,
-    MatFormFieldModule,
-    MatCardModule,
-    MatInputModule,
-  ],
+    imports: [
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatListModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatInputModule,
+        FormsModule,
+        HttpClientModule
+    ],
   declarations: [
     MiembrosPageComponent,
     MiembrosTableComponent,
     MiembrosDetailDialogComponent
+  ],
+  providers: [
+    MiembrosService
   ]
 })
 

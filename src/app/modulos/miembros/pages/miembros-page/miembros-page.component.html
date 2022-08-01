@@ -3,7 +3,18 @@
   <p>Ver, editar y dar de baja a miembros. </p>
 
   <div class="table-container">
-    <button mat-button color="primary">Agregar nuevo</button>
+    <button
+      class="action-button"
+      (click)="openEmptyDialog()"
+      mat-flat-button color="primary">
+      <mat-icon>add</mat-icon> &nbsp;
+      Agregar nuevo</button>
+    <button
+      class="action-button"
+      mat-flat-button color="accent">
+      <mat-icon>file_upload</mat-icon> &nbsp;
+      Importar</button>
+
     <br>
     <app-miembros-table>
 

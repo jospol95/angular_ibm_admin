@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="Model" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -6,9 +6,9 @@
   <!-- Symbol Column -->
   <ng-container matColumnDef="Acciones">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element">
+    <td mat-cell *matCellDef="let miembro">
       <button
-        (click)="OpenDetails(element.Id)"
+        (click)="OpenDetails(miembro.Id)"
         class="table-icons"
         mat-icon-button color="secondary" aria-label="Example icon button with a home icon">
         <mat-icon>visibility</mat-icon>
@@ -16,34 +16,34 @@
     </td>
   </ng-container>
 
-  <!-- Position Column -->
+
   <ng-container matColumnDef="Nombre">
     <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let element"> {{element.Nombre}} </td>
+    <td mat-cell *matCellDef="let miembro"> {{miembro.Nombre}} </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="Apellido">
     <th mat-header-cell *matHeaderCellDef> Apellido </th>
-    <td mat-cell *matCellDef="let element"> {{element.Apellido}} </td>
+    <td mat-cell *matCellDef="let miembro"> {{miembro.Apellido}} </td>
   </ng-container>
 
   <!-- Weight Column -->
   <ng-container matColumnDef="Email">
     <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+    <td mat-cell *matCellDef="let miembro"> {{miembro.Email}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="Telefono1">
     <th mat-header-cell *matHeaderCellDef> Telefono 1 </th>
-    <td mat-cell *matCellDef="let element"> {{element.Telefono1}} </td>
+    <td mat-cell *matCellDef="let miembro"> {{miembro.Telefono1}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="Genero">
     <th mat-header-cell *matHeaderCellDef>Genero</th>
-    <td mat-cell *matCellDef="let element"> {{element.Genero}} </td>
+    <td mat-cell *matCellDef="let miembro"> {{miembro.Genero}} </td>
   </ng-container>
 
 

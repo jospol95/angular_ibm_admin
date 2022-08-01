@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Detalles miembro</h2>
+<h2 mat-dialog-title>{{DecideTitle()}}</h2>
 <mat-dialog-content class="mat-typography">
   <mat-card>
     <mat-list>
@@ -6,35 +6,37 @@
       <mat-divider></mat-divider>
       <mat-form-field appearance="standard" >
         <mat-label>Nombre</mat-label>
-        <input value="Jose Orlando" matInput placeholder="Nombres">
+        <input
+          [(ngModel)]="Model.Nombre"
+          matInput placeholder="Nombres">
       </mat-form-field>
       <mat-form-field appearance="standard" >
         <mat-label>Apellidos</mat-label>
-        <input value="Polanco Zelada" matInput placeholder="Apellidos">
+        <input [(ngModel)]="Model.Apellido" matInput placeholder="Apellidos">
       </mat-form-field>
       <br>
       <mat-form-field appearance="standard" >
         <mat-label>Correo</mat-label>
-        <input matInput value="miembro@gmail.com">
+        <input [(ngModel)]="Model.Email" matInput value="miembro@gmail.com">
       </mat-form-field>
       <br>
       <mat-form-field appearance="standard" >
         <mat-label>Genero</mat-label>
-        <input matInput value="M">
+        <input matInput [(ngModel)]="Model.Genero" value="M">
       </mat-form-field>
       <mat-form-field appearance="standard" >
         <mat-label>Estado civil</mat-label>
-        <input matInput value="Soltero">
+        <input matInput [(ngModel)]="Model.EstadoCivil" value="Soltero">
       </mat-form-field>
       <br>
       <mat-form-field appearance="standard" >
         <mat-label>Fecha nacimiento</mat-label>
-        <input matInput placeholder="">
+        <input matInput [(ngModel)]="Model.FechaNacimiento" placeholder="">
       </mat-form-field>
       <br>
       <mat-form-field appearance="standard" >
         <mat-label>Fecha bautismo</mat-label>
-        <input matInput placeholder="Casado, soltero, etc">
+        <input matInput [(ngModel)]="Model.FechaBautismo" placeholder="Casado, soltero, etc">
       </mat-form-field>
 
       <mat-list-item>
@@ -45,16 +47,16 @@
       <mat-divider></mat-divider>
       <mat-form-field appearance="standard" >
         <mat-label>Direccion</mat-label>
-        <input matInput value="Col. Miralvalle Complejo B">
+        <input matInput [(ngModel)]="Model.Direccion">
       </mat-form-field>
       <br>
       <mat-form-field appearance="standard">
         <mat-label>Telefono 1</mat-label>
-        <input matInput value="7111-1010">
+        <input matInput [(ngModel)]="Model.Telefono1">
       </mat-form-field>
       <mat-form-field appearance="standard" >
         <mat-label>Telefono 2</mat-label>
-        <input matInput value="Telefono 2">
+        <input matInput [(ngModel)]="Model.Telefono2">
       </mat-form-field>
       <br>
 <!--      <button mat-raised-button color="warn">Limpiar datos</button>-->
