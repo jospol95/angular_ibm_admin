@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MiembrosPageComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

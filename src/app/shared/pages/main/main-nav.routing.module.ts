@@ -8,6 +8,8 @@ import {InicioPageComponent} from "../../../modulos/inicio/pages";
 import {InicioModule} from "../../../modulos/inicio/inicio-module";
 import {MiembrosPageComponent} from "../../../modulos/miembros/pages";
 import {MiembrosModule} from "../../../modulos/miembros/miembros.module";
+import {UsuariosPageComponent} from "../../../modulos/usuarios/pages/usuarios-page/usuarios-page.component";
+import {UsuariosModule} from "../../../modulos/usuarios/usuarios.module";
 
 
 const routes: Routes = [
@@ -31,6 +33,10 @@ const routes: Routes = [
       {
         path: 'miembros',
         component: MiembrosPageComponent
+      },
+      {
+        path: 'usuarios',
+        component: UsuariosPageComponent
       }
     ]
   },
@@ -41,6 +47,7 @@ const routes: Routes = [
     BienvenidaModule,
     MiembrosModule,
     InicioModule,
+    UsuariosModule,
     SharedPagesModule],
   exports: [RouterModule]
 })
