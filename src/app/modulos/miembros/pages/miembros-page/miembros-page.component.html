@@ -16,9 +16,17 @@
       Importar</button>
 
     <br>
-    <app-miembros-table>
+    <app-miembros-table [Model]="PageViewModel.Results" >
 
     </app-miembros-table>
+
+    <mat-paginator [length]="PageViewModel.ResultsCount"
+                   [pageSize]="ItemsPerPage"
+                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   (page)="HandlePageChanged($event)"
+                   aria-label="Select page">
+    </mat-paginator>
+
   </div>
 
 </div>

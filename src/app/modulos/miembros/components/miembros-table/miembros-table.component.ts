@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {MiembrosDetailDialogComponent} from "../../dialogs/miembros-detail-dialog/miembros-detail-dialog.component";
 import {MiembrosService} from "../../miembros-service";
@@ -50,7 +50,7 @@ import {MiembroViewModel} from "../../models/miembro.view-model";
 export class MiembrosTableComponent implements OnInit {
 
   displayedColumns: string[] = ['Acciones', 'Nombre', 'Apellido', 'Email', 'Telefono1', 'Genero',];
-  public Model = new Array<MiembroViewModel>();
+  @Input() public Model = new Array<MiembroViewModel>();
   // dataSource = ELEMENT_DATA;
 
   // displayedColumns: string[];
@@ -60,10 +60,7 @@ export class MiembrosTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._service.Get(1, 30).subscribe((m) => {
-      this.Model = m.Results;
-      debugger;
-    });
+
   }
 
 

@@ -29,4 +29,7 @@ export class MiembrosDetailDialogComponent implements OnInit {
     return 'Nuevo miembro';
   }
 
+  public SaveMiembro() {
+    console.log(this.Model);
+  }
 }

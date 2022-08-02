@@ -13,20 +13,25 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MiembrosService} from "./miembros-service";
 import {HttpClientModule} from "@angular/common/http";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { MiembrosFormComponent } from '../../shared/components/miembros-form/miembros-form.component';
+import {SharedComponentsModule} from "../../shared/components/shared-components.module";
 
 @NgModule({
-    imports: [
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        MatDialogModule,
-        MatListModule,
-        MatFormFieldModule,
-        MatCardModule,
-        MatInputModule,
-        FormsModule,
-        HttpClientModule
-    ],
+  imports: [
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    FormsModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    SharedComponentsModule
+  ],
   declarations: [
     MiembrosPageComponent,
     MiembrosTableComponent,
