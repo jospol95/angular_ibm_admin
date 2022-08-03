@@ -2,32 +2,43 @@
   <mat-list>
     <mat-list-item><span>Informacion de miembro</span></mat-list-item>
     <mat-divider></mat-divider>
-    <mat-form-field appearance="standard" >
+    <mat-form-field class="form-custom-field" appearance="standard" >
       <mat-label>Nombre</mat-label>
       <input
         [(ngModel)]="Miembro.Nombre"
         matInput placeholder="Nombres">
     </mat-form-field>
-    <mat-form-field appearance="standard" >
+    <mat-form-field class="form-custom-field" appearance="standard" >
       <mat-label>Apellidos</mat-label>
       <input [(ngModel)]="Miembro.Apellido" matInput placeholder="Apellidos">
     </mat-form-field>
     <br>
-    <mat-form-field appearance="standard" >
+    <mat-form-field class="form-custom-field" appearance="standard" >
       <mat-label>Correo</mat-label>
       <input [(ngModel)]="Miembro.Email" matInput value="miembro@gmail.com">
     </mat-form-field>
     <br>
-    <mat-form-field appearance="standard" >
+    <mat-form-field class="form-custom-field" appearance="standard" >
       <mat-label>Genero</mat-label>
-      <input matInput [(ngModel)]="Miembro.Genero" value="M">
+      <mat-select [(value)]="Miembro.Genero">
+        <mat-option value="Masculino">Masculino</mat-option>
+        <mat-option value="Femenino">Femenino</mat-option>
+      </mat-select>
+<!--      <input matInput [(ngModel)]="Miembro.Genero" value="M">-->
     </mat-form-field>
-    <mat-form-field appearance="standard" >
+    <mat-form-field class="form-custom-field" appearance="standard" >
       <mat-label>Estado civil</mat-label>
-      <input matInput [(ngModel)]="Miembro.EstadoCivil" value="Soltero">
+      <mat-select>
+        <mat-option value="Casado">Casado</mat-option>
+        <mat-option value="Soltero">Soltero</mat-option>
+        <mat-option value="Viudo">Viudo</mat-option>
+        <mat-option value="Divorciado">Divorciado</mat-option>
+      </mat-select>
+
+<!--      <input matInput [(ngModel)]="Miembro.EstadoCivil" value="Soltero">-->
     </mat-form-field>
     <br>
-    <mat-form-field appearance="standard" >
+    <mat-form-field class="form-custom-field" appearance="standard" >
       <mat-label>Fecha nacimiento</mat-label>
       <input [(ngModel)]="Miembro.FechaNacimiento" matInput [matDatepicker]="picker">
       <mat-hint>MM/DD/YYYY</mat-hint>
@@ -37,7 +48,7 @@
 <!--      <input matInput [(ngModel)]="Miembro.FechaNacimiento" placeholder="">-->
     </mat-form-field>
 <!--    <br>-->
-    <mat-form-field appearance="standard" >
+    <mat-form-field class="form-custom-field" appearance="standard" >
       <mat-label>Fecha bautismo</mat-label>
       <input [(ngModel)]="Miembro.FechaBautismo" matInput [matDatepicker]="picker2">
       <mat-hint>MM/DD/YYYY</mat-hint>
@@ -47,6 +58,8 @@
 <!--      <input matInput [(ngModel)]="Miembro.FechaBautismo" placeholder="Casado, soltero, etc">-->
     </mat-form-field>
 
+    <br>
+    <br>
     <mat-list-item>
           <span>
             Contacto

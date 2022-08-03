@@ -30,6 +30,15 @@ export class MiembrosDetailDialogComponent implements OnInit {
   }
 
   public SaveMiembro() {
-    console.log(this.Model);
+    //TODO Modificar estas en Backend
+    this.Model.FechaConversion = this.Model.FechaNacimiento;
+    this.Model.FechaPrimeraVezCongregado = this.Model.FechaNacimiento;
+
+    this._service.CreateOrUpdateMiembro(this.Model).subscribe((r) => {
+      if(r === true){
+        console.log('Done');
+
+      }
+    })
   }
 }

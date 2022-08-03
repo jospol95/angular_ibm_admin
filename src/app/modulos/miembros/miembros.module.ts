@@ -16,6 +16,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { MiembrosFormComponent } from '../../shared/components/miembros-form/miembros-form.component';
 import {SharedComponentsModule} from "../../shared/components/shared-components.module";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   imports: [
@@ -30,7 +32,9 @@ import {SharedComponentsModule} from "../../shared/components/shared-components.
     FormsModule,
     HttpClientModule,
     MatPaginatorModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    MatExpansionModule,
+    MatDatepickerModule
   ],
   declarations: [
     MiembrosPageComponent,

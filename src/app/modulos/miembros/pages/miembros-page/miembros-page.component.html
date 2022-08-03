@@ -8,15 +8,53 @@
       (click)="openEmptyDialog()"
       mat-flat-button color="primary">
       <mat-icon>add</mat-icon> &nbsp;
-      Agregar nuevo</button>
+      Agregar nuevo
+    </button>
     <button
       class="action-button"
       mat-flat-button color="accent">
       <mat-icon>file_upload</mat-icon> &nbsp;
-      Importar</button>
+      Importar
+    </button>
+
+    <!--    <mat-accordion>-->
+    <mat-expansion-panel expanded="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Filtros
+        </mat-panel-title>
+        <!--          <mat-panel-description>-->
+        <!--            This is a summary of the content-->
+        <!--          </mat-panel-description>-->
+      </mat-expansion-panel-header>
+      <mat-form-field class="filter-field" appearance="standard">
+        <mat-label>Buscar</mat-label>
+        <input matInput placeholder="Nombre, Apellidos, etc">
+      </mat-form-field>
+      <mat-form-field class="filter-field" appearance="standard">
+        <mat-label>Fecha nacimiento</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Inicio">
+          <input matEndDate placeholder="Fin">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      <mat-form-field class="filter-field" appearance="standard">
+        <mat-label>Fecha Bautismo</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Inicio">
+          <input matEndDate placeholder="Fin">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </mat-expansion-panel>
 
     <br>
-    <app-miembros-table [Model]="PageViewModel.Results" >
+    <app-miembros-table [Model]="PageViewModel.Results">
 
     </app-miembros-table>
 

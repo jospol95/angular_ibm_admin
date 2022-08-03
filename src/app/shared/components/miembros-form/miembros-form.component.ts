@@ -10,6 +10,7 @@ export class MiembrosFormComponent implements OnInit {
 
   @Input() public Miembro = new CreateOrUpdateMiembroCommand();
   @Output() public MiembroChange = new EventEmitter<CreateOrUpdateMiembroCommand>();
+  // GeneroSelected: any;
 
   constructor() { }
 
