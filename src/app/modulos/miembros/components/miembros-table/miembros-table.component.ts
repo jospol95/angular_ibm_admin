@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {MiembrosDetailDialogComponent} from "../../dialogs/miembros-detail-dialog/miembros-detail-dialog.component";
 import {MiembrosService} from "../../miembros-service";
@@ -51,6 +51,7 @@ export class MiembrosTableComponent implements OnInit {
 
   displayedColumns: string[] = ['Acciones', 'Nombre', 'Apellido', 'Email', 'Telefono1', 'Genero',];
   @Input() public Model = new Array<MiembroViewModel>();
+  @Output() public Reload = new EventEmitter();
   // dataSource = ELEMENT_DATA;
 
   // displayedColumns: string[];
@@ -67,11 +68,12 @@ export class MiembrosTableComponent implements OnInit {
   public OpenDetails(id: any) {
     // console.log(id);
     const dialogRef = this.detailsDialog.open(MiembrosDetailDialogComponent, {
-      data: {miembroId: 1},
+      data: {miembroId: id},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.Reload.emit();
     });
   }
 }

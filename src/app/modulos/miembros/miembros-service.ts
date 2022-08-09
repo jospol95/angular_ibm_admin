@@ -14,13 +14,19 @@ export class MiembrosService {
 
   }
 
+  public Get(id: number){
+    let params = new HttpParams();
+    params = params.append('id', id)
 
-  public Get(pagActual: number, tamPagina: number){
+    return this.http.get<MiembroViewModel>(this.apiUrl , {params: params});
+  }
+
+  public GetAll(pagActual: number, tamPagina: number){
     let params = new HttpParams();
     params = params.append('pagActual', pagActual);
     params = params.append('tamPagina', tamPagina)
 
-    return this.http.get<PaginationResultViewModel<MiembroViewModel>>(this.apiUrl, {params: params});
+    return this.http.get<PaginationResultViewModel<MiembroViewModel>>(this.apiUrl + 'getAll', {params: params});
   }
 
   public CreateOrUpdateMiembro(miembro: CreateOrUpdateMiembroCommand){

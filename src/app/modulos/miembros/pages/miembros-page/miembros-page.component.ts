@@ -24,31 +24,35 @@ export class MiembrosPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getMiembros();
+    this.GetMiembros();
   }
 
 
-  public openEmptyDialog() {
+  public openDialog() {
     const dialogRef = this.detailsDialog.open(MiembrosDetailDialogComponent, {
       data: {miembroId: null},
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      debugger;
       console.log(`Dialog result: ${result}`);
-      this.getMiembros();
+      this.GetMiembros();
+      debugger;
     });
   }
 
   HandlePageChanged($event: PageEvent) {
     this.ItemsPerPage = $event.pageSize;
     this.CurrentPage = $event.pageIndex + 1;
-    this.getMiembros();
+    this.GetMiembros();
+
   }
 
-  private getMiembros(){
-    this._service.Get(this.CurrentPage, this.ItemsPerPage).subscribe((m) => {
+  public GetMiembros(){
+    this._service.GetAll(this.CurrentPage, this.ItemsPerPage).subscribe((m) => {
       this.PageViewModel.Results = m.Results;
       this.PageViewModel.ResultsCount = m.ResultsCount;
+
     });
   }
 }

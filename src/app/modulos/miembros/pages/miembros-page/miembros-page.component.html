@@ -5,7 +5,7 @@
   <div class="table-container">
     <button
       class="action-button"
-      (click)="openEmptyDialog()"
+      (click)="openDialog()"
       mat-flat-button color="primary">
       <mat-icon>add</mat-icon> &nbsp;
       Agregar nuevo
@@ -43,18 +43,20 @@
       </mat-form-field>
       <mat-form-field class="filter-field" appearance="standard">
         <mat-label>Fecha Bautismo</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
+        <mat-date-range-input [rangePicker]="picker2">
           <input matStartDate placeholder="Inicio">
           <input matEndDate placeholder="Fin">
         </mat-date-range-input>
         <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker2></mat-date-range-picker>
       </mat-form-field>
     </mat-expansion-panel>
 
     <br>
-    <app-miembros-table [Model]="PageViewModel.Results">
+    <app-miembros-table
+      (Reload)="GetMiembros()"
+      [Model]="PageViewModel.Results">
 
     </app-miembros-table>
 

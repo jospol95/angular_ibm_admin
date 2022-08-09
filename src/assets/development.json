@@ -2,7 +2,7 @@
   "debugging": true,
 
   "API_ENDPOINTS": {
-    "miembros": "https://localhost:49161/api/Miembros"
+    "miembros": "https://localhost:49153/api/Miembros"
 
   }
 }

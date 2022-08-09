@@ -20,6 +20,9 @@ export class MiembrosDetailDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.miembroId!= null){
+      this.getDetails();
+    }
   }
 
   public DecideTitle() {
@@ -39,6 +42,12 @@ export class MiembrosDetailDialogComponent implements OnInit {
         console.log('Done');
 
       }
+    })
+  }
+
+  private getDetails(){
+    this._service.Get(this.miembroId).subscribe((m) => {
+      this.Model = m;
     })
   }
 }
