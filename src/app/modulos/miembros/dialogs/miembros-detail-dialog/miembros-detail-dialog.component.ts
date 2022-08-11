@@ -1,7 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CreateOrUpdateMiembroCommand} from "../../models/create-or-update-miembro-command";
 import {MiembrosService} from "../../miembros-service";
+import {MessageBoxService} from "../../../../shared/services/message-box.service";
 
 @Component({
   selector: 'app-miembros-detail-dialog',
@@ -11,16 +12,19 @@ import {MiembrosService} from "../../miembros-service";
 export class MiembrosDetailDialogComponent implements OnInit {
 
   public Model = new CreateOrUpdateMiembroCommand();
+  public success = false;
   private miembroId: number;
 
   constructor(
     private _service: MiembrosService,
+    private _messageBoxService: MessageBoxService,
+    public dialogRef: MatDialogRef<MiembrosDetailDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { miembroId: number }) {
     this.miembroId = data.miembroId;
   }
 
   ngOnInit(): void {
-    if(this.miembroId!= null){
+    if (this.miembroId != null) {
       this.getDetails();
     }
   }
@@ -38,14 +42,16 @@ export class MiembrosDetailDialogComponent implements OnInit {
     this.Model.FechaPrimeraVezCongregado = this.Model.FechaNacimiento;
 
     this._service.CreateOrUpdateMiembro(this.Model).subscribe((r) => {
-      if(r === true){
-        console.log('Done');
-
-      }
+      this._messageBoxService.showSuccessfulAlert(this.getSuccessfulMessage());
+      this.dialogRef.close();
     })
   }
 
-  private getDetails(){
+  private getSuccessfulMessage() {
+    return this.miembroId == null ? 'Miembro agregado' : 'Miembro modificado';
+  }
+
+  private getDetails() {
     this._service.Get(this.miembroId).subscribe((m) => {
       this.Model = m;
     })

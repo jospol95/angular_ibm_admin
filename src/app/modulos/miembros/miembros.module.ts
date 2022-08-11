@@ -1,5 +1,4 @@
 import {NgModule} from "@angular/core";
-import { MiembrosPageComponent } from './pages';
 import { MiembrosTableComponent } from './components';
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
@@ -14,10 +13,11 @@ import {FormsModule} from "@angular/forms";
 import {MiembrosService} from "./miembros-service";
 import {HttpClientModule} from "@angular/common/http";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import { MiembrosFormComponent } from '../../shared/components/miembros-form/miembros-form.component';
 import {SharedComponentsModule} from "../../shared/components/shared-components.module";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MiembrosPageComponent, MiembrosUploadPageComponent} from "./pages";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   imports: [
@@ -34,12 +34,14 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatPaginatorModule,
     SharedComponentsModule,
     MatExpansionModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatGridListModule
   ],
   declarations: [
     MiembrosPageComponent,
     MiembrosTableComponent,
-    MiembrosDetailDialogComponent
+    MiembrosDetailDialogComponent,
+    MiembrosUploadPageComponent
   ],
   providers: [
     MiembrosService

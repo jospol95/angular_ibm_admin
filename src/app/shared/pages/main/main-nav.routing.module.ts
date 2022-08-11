@@ -8,8 +8,11 @@ import {InicioPageComponent} from "../../../modulos/inicio/pages";
 import {InicioModule} from "../../../modulos/inicio/inicio-module";
 import {MiembrosPageComponent} from "../../../modulos/miembros/pages";
 import {MiembrosModule} from "../../../modulos/miembros/miembros.module";
-import {UsuariosPageComponent} from "../../../modulos/usuarios/pages/usuarios-page/usuarios-page.component";
+import {UsuariosPageComponent} from "../../../modulos/usuarios/pages";
 import {UsuariosModule} from "../../../modulos/usuarios/usuarios.module";
+import {
+  MiembrosUploadPageComponent
+} from "../../../modulos/miembros/pages";
 
 
 const routes: Routes = [
@@ -33,6 +36,10 @@ const routes: Routes = [
       {
         path: 'miembros',
         component: MiembrosPageComponent
+      },
+      {
+        path: 'miembros/upload',
+        component: MiembrosUploadPageComponent
       },
       {
         path: 'usuarios',

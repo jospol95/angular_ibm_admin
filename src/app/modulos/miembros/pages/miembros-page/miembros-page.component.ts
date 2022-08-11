@@ -5,6 +5,8 @@ import {MiembrosService} from "../../miembros-service";
 import {MiembroViewModel} from "../../models/miembro.view-model";
 import {PaginationResultViewModel} from "../../../../shared/models/pagination-result-view.model";
 import {PageEvent} from "@angular/material/paginator";
+import {MessageBoxService} from "../../../../shared/services/message-box.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-miembros-page',
@@ -19,7 +21,9 @@ export class MiembrosPageComponent implements OnInit {
   public CurrentPage = 1;
 
   constructor(public detailsDialog: MatDialog,
-              private _service : MiembrosService ) {
+              private _router: Router,
+              private readonly _messageBoxService: MessageBoxService,
+              private _service: MiembrosService) {
     this.PageViewModel.ResultsCount = 0;
   }
 
@@ -34,10 +38,8 @@ export class MiembrosPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      debugger;
-      console.log(`Dialog result: ${result}`);
+    //   this._messageBoxService.showSuccessfulAlert('Miembro agregado');
       this.GetMiembros();
-      debugger;
     });
   }
 
@@ -48,7 +50,11 @@ export class MiembrosPageComponent implements OnInit {
 
   }
 
-  public GetMiembros(){
+  public goToUploadPage() {
+    this._router.navigate(['ibm-admin/miembros/upload']);
+  }
+
+  public GetMiembros() {
     this._service.GetAll(this.CurrentPage, this.ItemsPerPage).subscribe((m) => {
       this.PageViewModel.Results = m.Results;
       this.PageViewModel.ResultsCount = m.ResultsCount;

@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MiembrosDetailDialogComponent} from "../../dialogs/miembros-detail-dialog/miembros-detail-dialog.component";
 import {MiembrosService} from "../../miembros-service";
 import {MiembroViewModel} from "../../models/miembro.view-model";
+import {MessageBoxService} from "../../../../shared/services/message-box.service";
 
 // export interface PeriodicElement {
 //   Id: number;
@@ -57,6 +58,7 @@ export class MiembrosTableComponent implements OnInit {
   // displayedColumns: string[];
 
   constructor(public detailsDialog: MatDialog,
+              private readonly _messageBoxService: MessageBoxService,
               private _service: MiembrosService) {
   }
 
@@ -72,7 +74,6 @@ export class MiembrosTableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
       this.Reload.emit();
     });
   }
