@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {MiembrosDetailDialogComponent} from "../../dialogs/miembros-detail-dialog/miembros-detail-dialog.component";
 import {MiembrosService} from "../../miembros-service";
 import {MiembroViewModel} from "../../models/miembro.view-model";
+import {MessageBoxService} from "../../../../shared/services/message-box.service";
 
 // export interface PeriodicElement {
 //   Id: number;
@@ -50,31 +51,30 @@ import {MiembroViewModel} from "../../models/miembro.view-model";
 export class MiembrosTableComponent implements OnInit {
 
   displayedColumns: string[] = ['Acciones', 'Nombre', 'Apellido', 'Email', 'Telefono1', 'Genero',];
-  public Model = new Array<MiembroViewModel>();
+  @Input() public Model = new Array<MiembroViewModel>();
+  @Output() public Reload = new EventEmitter();
   // dataSource = ELEMENT_DATA;
 
   // displayedColumns: string[];
 
   constructor(public detailsDialog: MatDialog,
+              private readonly _messageBoxService: MessageBoxService,
               private _service: MiembrosService) {
   }
 
   ngOnInit(): void {
-    this._service.Get(1, 30).subscribe((m) => {
-      this.Model = m.Results;
-      debugger;
-    });
+
   }
 
 
   public OpenDetails(id: any) {
     // console.log(id);
     const dialogRef = this.detailsDialog.open(MiembrosDetailDialogComponent, {
-      data: {miembroId: 1},
+      data: {miembroId: id},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.Reload.emit();
     });
   }
 }

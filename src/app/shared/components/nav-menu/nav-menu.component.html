@@ -1,7 +1,9 @@
 
-<mat-toolbar color="secondary" fxLayout="row" fxLayoutAlign="space-between center">
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
   <span>
-    <button mat-button routerLink="/">Iglesia Bautista Miramonte</button>
+    <button mat-button routerLink="ibm-admin/inicio">
+      <img alt="empty" src="./assets/ibm-logo-blanco.png">
+    </button>
 <!--    <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>-->
   </span>
   <app-nav-menu-unauth *ngIf="!isAuthenticated">

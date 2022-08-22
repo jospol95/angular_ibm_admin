@@ -5,6 +5,11 @@ import {UnauthenticatedPageComponent} from "./shared/pages";
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'auth',
+    pathMatch: 'full',
+  },
+  {
     path: 'auth',
     component: UnauthenticatedPageComponent
   },

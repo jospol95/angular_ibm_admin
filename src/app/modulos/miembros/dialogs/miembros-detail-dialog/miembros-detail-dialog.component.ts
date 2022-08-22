@@ -1,7 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CreateOrUpdateMiembroCommand} from "../../models/create-or-update-miembro-command";
 import {MiembrosService} from "../../miembros-service";
+import {MessageBoxService} from "../../../../shared/services/message-box.service";
+import {AuthenticationService} from "../../../../shared/services/authentication-service";
 
 @Component({
   selector: 'app-miembros-detail-dialog',
@@ -11,15 +13,29 @@ import {MiembrosService} from "../../miembros-service";
 export class MiembrosDetailDialogComponent implements OnInit {
 
   public Model = new CreateOrUpdateMiembroCommand();
+  public success = false;
   private miembroId: number;
 
   constructor(
     private _service: MiembrosService,
+    public _authentication: AuthenticationService,
+    private _messageBoxService: MessageBoxService,
+    public dialogRef: MatDialogRef<MiembrosDetailDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { miembroId: number }) {
     this.miembroId = data.miembroId;
   }
 
   ngOnInit(): void {
+    if (this.miembroId != null) {
+      this.getDetails();
+    }
+  }
+
+
+  public canUserSave(){
+    const isThisANewMiembro = this.miembroId == null;
+    if(isThisANewMiembro) return true;
+    return this._authentication.isAdmin();
   }
 
   public DecideTitle() {
@@ -29,4 +45,24 @@ export class MiembrosDetailDialogComponent implements OnInit {
     return 'Nuevo miembro';
   }
 
+  public SaveMiembro() {
+    //TODO Modificar estas en Backend
+    this.Model.FechaConversion = this.Model.FechaNacimiento;
+    this.Model.FechaPrimeraVezCongregado = this.Model.FechaNacimiento;
+
+    this._service.CreateOrUpdateMiembro(this.Model).subscribe((r) => {
+      this._messageBoxService.showSuccessfulAlert(this.getSuccessfulMessage());
+      this.dialogRef.close();
+    })
+  }
+
+  private getSuccessfulMessage() {
+    return this.miembroId == null ? 'Miembro agregado' : 'Miembro modificado';
+  }
+
+  private getDetails() {
+    this._service.Get(this.miembroId).subscribe((m) => {
+      this.Model = m;
+    })
+  }
 }
