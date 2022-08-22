@@ -7,6 +7,7 @@ import {PaginationResultViewModel} from "../../../../shared/models/pagination-re
 import {PageEvent} from "@angular/material/paginator";
 import {MessageBoxService} from "../../../../shared/services/message-box.service";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../../../shared/services/authentication-service";
 
 @Component({
   selector: 'app-miembros-page',
@@ -22,6 +23,7 @@ export class MiembrosPageComponent implements OnInit {
 
   constructor(public detailsDialog: MatDialog,
               private _router: Router,
+              public _authentication: AuthenticationService,
               private readonly _messageBoxService: MessageBoxService,
               private _service: MiembrosService) {
     this.PageViewModel.ResultsCount = 0;

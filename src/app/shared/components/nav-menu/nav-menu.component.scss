@@ -3,6 +3,11 @@ img{
   margin-left: 60px;
 }
 
+.mat-toolbar.mat-primary {
+  background: #47081F;
+  color: #fff;
+}
+
 @media only screen and (max-width: 600px)  {
   img{
     margin: 0 auto;

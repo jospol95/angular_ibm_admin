@@ -18,6 +18,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MiembrosPageComponent, MiembrosUploadPageComponent} from "./pages";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
     SharedComponentsModule,
     MatExpansionModule,
     MatDatepickerModule,
-    MatGridListModule
+    MatGridListModule,
+    CommonModule
   ],
   declarations: [
     MiembrosPageComponent,

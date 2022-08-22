@@ -7,8 +7,8 @@ import {CreateOrUpdateMiembroCommand} from "../../../modulos/miembros/models/cre
   styleUrls: ['./miembros-form.component.scss']
 })
 export class MiembrosFormComponent implements OnInit {
-
   @Input() public Miembro = new CreateOrUpdateMiembroCommand();
+  @Input() public isReadOnly = false;
   @Output() public MiembroChange = new EventEmitter<CreateOrUpdateMiembroCommand>();
   // GeneroSelected: any;
 
@@ -16,5 +16,6 @@ export class MiembrosFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

@@ -8,15 +8,16 @@
       Inicio
     </button>
 
-    <button mat-button routerLink="/ibm-admin/bienvenida">
-      <mat-icon>card_membership</mat-icon>
+    <button *ngIf="!_authentication.isAdmin()" mat-button routerLink="/ibm-admin/bienvenida">
+      <mat-icon >card_membership</mat-icon>
       Bienvenida
     </button>
-    <button mat-button routerLink="/ibm-admin/miembros">
+    <button  mat-button routerLink="/ibm-admin/miembros">
       <mat-icon>people_outline</mat-icon>
       Miembros
     </button>
-    <button mat-button routerLink="/ibm-admin/usuarios">
+    <button *ngIf="_authentication.isAdmin()"
+            mat-button routerLink="/ibm-admin/usuarios">
       <mat-icon>supervised_user_circle</mat-icon>
       Admin Usuarios
     </button>

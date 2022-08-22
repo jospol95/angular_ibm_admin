@@ -1,12 +1,15 @@
 <h2 mat-dialog-title>{{DecideTitle()}}</h2>
 <mat-dialog-content class="mat-typography">
-  <app-miembros-form [(Miembro)]="Model">
+  <app-miembros-form
+    [isReadOnly]="!_authentication.isAdmin()"
+    [(Miembro)]="Model">
   </app-miembros-form>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Salir</button>
   <button mat-raised-button
+          *ngIf="canUserSave()"
           (click)="SaveMiembro()"
           color="primary" cdkFocusInitial>Guardar</button>
 </mat-dialog-actions>

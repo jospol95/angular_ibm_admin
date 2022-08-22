@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CreateOrUpdateMiembroCommand} from "../../models/create-or-update-miembro-command";
 import {MiembrosService} from "../../miembros-service";
 import {MessageBoxService} from "../../../../shared/services/message-box.service";
+import {AuthenticationService} from "../../../../shared/services/authentication-service";
 
 @Component({
   selector: 'app-miembros-detail-dialog',
@@ -17,6 +18,7 @@ export class MiembrosDetailDialogComponent implements OnInit {
 
   constructor(
     private _service: MiembrosService,
+    public _authentication: AuthenticationService,
     private _messageBoxService: MessageBoxService,
     public dialogRef: MatDialogRef<MiembrosDetailDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { miembroId: number }) {
@@ -27,6 +29,13 @@ export class MiembrosDetailDialogComponent implements OnInit {
     if (this.miembroId != null) {
       this.getDetails();
     }
+  }
+
+
+  public canUserSave(){
+    const isThisANewMiembro = this.miembroId == null;
+    if(isThisANewMiembro) return true;
+    return this._authentication.isAdmin();
   }
 
   public DecideTitle() {

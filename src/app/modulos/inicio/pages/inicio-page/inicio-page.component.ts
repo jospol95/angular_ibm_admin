@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from "../../../../shared/services/authentication-service";
 
 @Component({
   selector: 'app-inicio-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _authentication: AuthenticationService) { }
 
   ngOnInit(): void {
+
   }
 
 }
